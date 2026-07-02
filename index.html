@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suhayb Sharaf - Professional Portfolio</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #3b82f6;
+                --primary-hover: #60a5fa;
+                --bg: #0f172a;
+                --bg-alt: #020617;
+                --text-main: #f8fafc;
+                --text-muted: #94a3b8;
+                --card-bg: #1e293b;
+                --border: #334155;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            header {
+                background-color: rgba(15, 23, 42, 0.9);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-alt);
+            border-color: var(--text-muted);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image-container {
+            flex: 0 0 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--bg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            background-color: var(--bg-alt);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: white;
+            font-size: 5rem;
+            font-weight: 700;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-alt {
+            background-color: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 2px;
+            flex: 1;
+            background-color: var(--border);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .card-subtitle {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-date {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .card-list {
+            list-style: disc;
+            margin-left: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .card-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Badges */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            background-color: var(--bg-alt);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Education Highlight */
+        .edu-highlight {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), transparent);
+            border: 1px solid var(--primary);
+        }
+        
+        .achievement-text {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Skills */
+        .skill-group {
+            margin-bottom: 2rem;
+        }
+
+        .skill-group h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content h3 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-links a {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .contact-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 100px;
+                gap: 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .card-header {
+                flex-direction: column;
+            }
+
+            .card-date {
+                margin-top: 0.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none; /* Keep it simple on mobile for pure HTML/CSS without toggle JS */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .profile-img-wrapper {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Suhayb Sharaf</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#education">Education</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content">
+                <span class="hero-tag">Computer Science & IT Specialist</span>
+                <h1>Suhayb Sharaf</h1>
+                <h2>Computer Science Graduate | AI & Networking Specialist</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Top-ranked Computer Science graduate from Taif University with hands-on experience in enterprise networking, system engineering, and implementing machine learning architectures. Passionate about solving complex problems through innovative technology.
+                </p>
+                <div class="hero-buttons">
+                    <a href="CV.pdf" class="btn btn-primary" download>Download CV</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="profile-img-wrapper">
+                    <img src="profile.jpg" alt="Suhayb Sharaf" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="profile-fallback">SS</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section-alt">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="card edu-highlight">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Taif University</h3>
+                            <div class="card-subtitle">Bachelor of Science in Computer Science</div>
+                            <p class="achievement-text">🏆 Ranked 1st in Computer Science Major</p>
+                            <p class="achievement-text">🏆 Ranked 1st in the College of Computers and Information Technology</p>
+                        </div>
+                        <div class="card-date">Aug 2021 – Jul 2026 (Expected)</div>
+                    </div>
+                    <ul class="card-list" style="margin-top: 1rem;">
+                        <li><strong>GPA:</strong> 3.94 / 4.00 (First Class Honors)</li>
+                        <li><strong>Location:</strong> Taif, Saudi Arabia</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Cooperative Training - Communication & IT Wing</h3>
+                            <div class="card-subtitle">King Fahad Air Base</div>
+                        </div>
+                        <div class="card-date">Jun 2025 – Aug 2025</div>
+                    </div>
+                    <ul class="card-list">
+                        <li>Focused on enterprise networking, hardware assembly, and system maintenance.</li>
+                        <li>Applied networking knowledge in real-world network environments, including VLANs, CIDR operations, and packet tracing.</li>
+                        <li>Assisted with fiber optic maintenance, cabling, and troubleshooting to ensure high-speed connectivity.</li>
+                        <li>Assisted with Cisco IP Telephony design to support scalable communication architectures.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Volunteer - Events and Public Relations</h3>
+                            <div class="card-subtitle">Ertwa Organization</div>
+                        </div>
+                        <div class="card-date">Jan 2026 – Present</div>
+                    </div>
+                    <ul class="card-list">
+                        <li>Active member supporting community initiatives in Taif, Saudi Arabia.</li>
+                        <li>Co-organized and managed the "Animatrix" event, successfully attracting over 400 attendees.</li>
+                        <li>Built relationships with external partners and coordinated cross-functional teams to support project needs.</li>
+                        <li>Assisted with programming tasks and technical solutions across departments.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-alt">
+            <div class="container">
+                <h2 class="section-title">Notable Projects</h2>
+                <div class="grid-2">
+                    <div class="card" style="grid-column: 1 / -1;">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">EduVision - Intelligent Exam Correction System</h3>
+                                <div class="card-subtitle">Graduation Capstone Project</div>
+                                <p style="color: var(--primary); font-weight: 600;">Ranked 5th in Taif University Capstone Project Competition</p>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                            An AI-based platform designed to automate the grading process for objective and handwritten exams while mapping results to educational outcomes.
+                        </p>
+                        <ul class="card-list">
+                            <li>Applied computer vision (YOLOv8) for layout detection, OCR, and deep semantic analysis (Vision LLMs, SBERT) to extract and evaluate answers.</li>
+                            <li>Linked student assessments with CLOs and PLOs to directly support ABET and NCAAA accreditation standards.</li>
+                            <li>Engineered an asynchronous processing pipeline utilizing Django-Q2, PostgreSQL, Docker, HTMX, and Alpine.js.</li>
+                            <li>Designed a comprehensive role-based dashboard for instructors to analyze student results and batch performance.</li>
+                        </ul>
+                        <div class="badge-container">
+                            <span class="badge">Python</span>
+                            <span class="badge">Django</span>
+                            <span class="badge">PostgreSQL</span>
+                            <span class="badge">YOLOv8</span>
+                            <span class="badge">SBERT</span>
+                            <span class="badge">Vision LLM</span>
+                            <span class="badge">HTMX & Alpine.js</span>
+                            <span class="badge">Tailwind CSS</span>
+                            <span class="badge">Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Employee Attrition Prediction</h3>
+                                <div class="card-subtitle">Neural Networks Course Project</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                            Developed machine learning models to predict employee attrition through extensive data preparation and analysis.
+                        </p>
+                        <ul class="card-list">
+                            <li>Compared Multi-Layer Perceptron (MLP) Back Propagation and Gradient Boosting models.</li>
+                            <li>Evaluated algorithms based on accuracy, precision, and recall metrics.</li>
+                            <li>Achieved 94% accuracy with MLP and 97% accuracy with Gradient Boosting.</li>
+                        </ul>
+                        <div class="badge-container">
+                            <span class="badge">Machine Learning</span>
+                            <span class="badge">Neural Networks</span>
+                            <span class="badge">Gradient Boosting</span>
+                            <span class="badge">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="container">
+            <h2 class="section-title">Technical Skills & Certifications</h2>
+            <div class="grid-3">
+                
+                <div class="card">
+                    <div class="skill-group">
+                        <h3>Programming & Web</h3>
+                        <div class="badge-container">
+                            <span class="badge">Python</span>
+                            <span class="badge">C++</span>
+                            <span class="badge">SQL</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">HTML/CSS</span>
+                            <span class="badge">Django</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="skill-group">
+                        <h3>AI & Machine Learning</h3>
+                        <div class="badge-container">
+                            <span class="badge">YOLOv8</span>
+                            <span class="badge">Vision LLMs</span>
+                            <span class="badge">SBERT</span>
+                            <span class="badge">PaddleOCR</span>
+                            <span class="badge">OpenCV</span>
+                            <span class="badge">Neural Networks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="skill-group">
+                        <h3>Networking, IT & Tools</h3>
+                        <div class="badge-container">
+                            <span class="badge">Cisco IP Telephony</span>
+                            <span class="badge">VLANs & CIDR</span>
+                            <span class="badge">Routing & Switching</span>
+                            <span class="badge">OSPF & ACLs</span>
+                            <span class="badge">DHCP, DNS, NAT, VPN</span>
+                            <span class="badge">Fiber Optics</span>
+                            <span class="badge">Linux</span>
+                            <span class="badge">Docker</span>
+                            <span class="badge">VMware</span>
+                            <span class="badge">Cisco Packet Tracer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 2rem;">
+                <div class="card">
+                    <div class="card-header" style="margin-bottom: 0;">
+                        <div>
+                            <h3 class="card-title">Cybersecurity Incident Response Analysis</h3>
+                            <div class="card-subtitle">Misk Foundation & stc</div>
+                        </div>
+                        <div class="card-date">May 2026</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" style="margin-bottom: 0;">
+                        <div>
+                            <h3 class="card-title">Cisco Certified Network Associate (CCNA)</h3>
+                            <div class="card-subtitle">Cisco</div>
+                        </div>
+                        <div class="card-date">Expected: Jul 2026</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; padding: 1.5rem; background-color: var(--bg-alt); border-radius: 12px; border: 1px solid var(--border);">
+                <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Languages</h3>
+                <p><strong>Arabic:</strong> Native &nbsp; | &nbsp; <strong>English:</strong> Excellent (STEP Score: 90)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <h3>Get In Touch</h3>
+            <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto;">
+                Currently based in Taif, Saudi Arabia. Feel free to reach out for professional inquiries or collaborations.
+            </p>
+            
+            <div class="contact-links">
+                <a href="mailto:suhayb.sharaf@hotmail.com">suhayb.sharaf@hotmail.com</a>
+                <span style="color: var(--text-muted);">|</span>
+                <a href="tel:+966537574380">+966 53 757 4380</a>
+                <span style="color: var(--text-muted);">|</span>
+                <a href="https://linkedin.com/in/suhaybsharaf" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+            
+            <p style="margin-top: 3rem; font-size: 0.875rem; color: var(--text-muted);">
+                &copy; 2026 Suhayb Sharaf. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
