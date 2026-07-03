@@ -161,6 +161,12 @@
   }
   .qc svg{color:var(--gold);flex-shrink:0}
   .qc:hover{color:var(--gold);border-color:rgba(227,179,65,.45);background:var(--gold-soft)}
+  .qc.cv{
+    background:linear-gradient(135deg,var(--violet-deep),var(--violet-strong));
+    border-color:transparent;color:#fff;font-weight:600;
+  }
+  .qc.cv svg{color:#fff}
+  .qc.cv:hover{filter:brightness(1.15);color:#fff;background:linear-gradient(135deg,var(--violet-deep),var(--violet-strong))}
 
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
   .stat{
@@ -172,8 +178,6 @@
     display:block;font-family:'Sora',sans-serif;font-weight:800;
     font-size:1.45rem;letter-spacing:-.02em;color:var(--violet);
   }
-  .stat b.gold{color:var(--gold)}
-  .stat.hl{border-color:rgba(227,179,65,.35)}
   .stat span{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--dim);letter-spacing:.05em;text-transform:uppercase;line-height:1.5;display:block;margin-top:4px}
 
   /* ---------- About ---------- */
@@ -422,6 +426,10 @@
       <p class="lead">Ranked <strong>1st in the Computer Science major</strong> and <strong>1st across the College of Computers and Information Technology</strong> at Taif University. I build on a foundation of enterprise networking and cybersecurity, and apply AI where it solves real problems.</p>
 
       <div class="quick-contact" aria-label="Quick contact">
+        <a class="qc cv" href="CV.pdf" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
         <a class="qc" href="mailto:suhayb.sharaf@hotmail.com">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
           suhayb.sharaf@hotmail.com
@@ -566,8 +574,7 @@
     <!-- ===== CERTIFICATIONS ===== -->
     <section id="certifications">
       <div class="reveal">
-        <p class="eyebrow">Certifications</p>
-        <h2>Credentials</h2>
+        <p class="eyebrow solo">Certifications</p>
         <div class="cert-grid">
           <div class="cert">
             <span class="ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg></span>
